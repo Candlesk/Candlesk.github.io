@@ -1,0 +1,78 @@
+# Haithem Aissa — Portfolio
+
+Personal portfolio and project writeups, built with [Astro](https://astro.build),
+TailwindCSS and DaisyUI, based on the [Astrofy](https://github.com/manuelernestog/astrofy)
+template.
+
+## Pages
+
+| Route       | What it is                                              |
+| ----------- | ------------------------------------------------------- |
+| `/`         | Hero, intro and featured projects                       |
+| `/projects` | All projects, linked to their writeups                  |
+| `/blog/`    | Project writeups (named after the projects)             |
+| `/cv`       | Resume: experience, education, projects, skills, certs  |
+| `/rss.xml`  | RSS feed of writeups                                    |
+
+## Development
+
+```bash
+pnpm install
+pnpm dev
+```
+
+The site runs at `http://localhost:4321`.
+
+```bash
+pnpm build     # production build in dist/
+pnpm preview   # preview the production build
+```
+
+## Adding a project writeup
+
+Each writeup is a Markdown file in `src/content/blog/`. The **file name becomes the URL
+slug**, so keep it lowercase with hyphens.
+
+```md
+---
+title: "My Project Name"
+description: "One or two sentences shown on the project cards."
+pubDate: "Nov 01 2026"
+heroImage: "/cover-my-project.webp"
+badge: "Security"
+tags: ["security", "networking"]
+---
+
+Writeup content goes here.
+```
+
+- Put cover images in `public/` and reference them as `/filename.webp`.
+- Tags create filter pages at `/blog/tag/<tag>`.
+- The project automatically appears on `/`, `/projects` and `/blog/`, sorted by `pubDate`.
+
+The five existing writeups are scaffolded with sections to fill in: overview, architecture,
+implementation, testing/results, challenges and screenshots.
+
+## Customising
+
+- **Site details, email and social links** — `src/config.ts`
+- **Deployment URL** — `site` in `astro.config.mjs`, plus `public/robots.txt`
+- **Navigation** — `src/components/SideBarMenu.astro`
+- **Home page** — `src/pages/index.astro`
+- **Resume** — `src/pages/cv.astro`
+- **Colors/theme** — `data-theme` in `src/layouts/BaseLayout.astro` (currently `night`)
+
+## Deployment
+
+Any static host works. On Netlify or Vercel, use:
+
+- Build command: `pnpm build`
+- Output directory: `dist`
+
+For GitHub Pages, set `site` to `https://<username>.github.io` and deploy the `dist`
+folder.
+
+## Credits
+
+Template by [Manuel Ernesto](https://github.com/manuelernestog/astrofy) (MIT license).
+Content and customisation for Haithem Aissa.

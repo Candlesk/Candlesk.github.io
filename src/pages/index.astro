@@ -1,0 +1,70 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HorizontalCard from "../components/HorizontalCard.astro";
+import { getCollection } from "astro:content";
+import createSlug from "../lib/createSlug";
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const featured = posts.slice(0, 3);
+---
+
+<BaseLayout sideBarActiveItemID="home">
+  <div class="pb-12 mt-5">
+    <div class="text-xl py-1">Hey there 👋</div>
+    <div class="text-5xl font-bold">I'm Haithem Aissa</div>
+    <div class="text-2xl md:text-3xl py-3 font-bold">
+      Information Systems &amp; Network Security Engineer
+    </div>
+    <div class="py-2 space-y-3">
+      <p class="text-lg">
+        I'm a cybersecurity student passionate about <b>network security</b>, <b>ethical hacking</b> and
+        <b>system administration</b>. I enjoy building secure infrastructure end to end, from the network
+        backbone to the CI/CD pipeline.
+      </p>
+      <p class="text-lg">
+        I'm currently looking for an internship where I can keep learning, contribute to real-world security
+        projects and grow with a strong technical team.
+      </p>
+    </div>
+    <div class="mt-8 flex flex-wrap gap-3">
+      <a class="btn" href="/projects">View my projects</a>
+      <a class="btn btn-outline" href="/cv">My resume</a>
+      <a class="btn btn-ghost" href="/blog/">Read the writeups</a>
+    </div>
+  </div>
+
+  <div class="flex items-end justify-between mb-2">
+    <div class="text-3xl font-bold">Featured projects {"</>"}</div>
+    <a class="link link-hover text-sm" href="/projects">All projects →</a>
+  </div>
+
+  {
+    featured.map((post) => (
+      <>
+        <HorizontalCard
+          title={post.data.title}
+          img={post.data.heroImage}
+          desc={post.data.description}
+          url={"/blog/" + createSlug(post.data.title, post.slug)}
+          target="_self"
+          badge={post.data.badge}
+          tags={post.data.tags}
+        />
+        <div class="divider my-0" />
+      </>
+    ))
+  }
+
+  <div class="mt-10 rounded-lg bg-base-200 p-6">
+    <div class="text-2xl font-bold mb-2">Currently building</div>
+    <p class="opacity-80">
+      I document every project as a writeup: the architecture, the decisions, the failures and the final
+      results. The posts are already named after the projects, so the full technical details can be added
+      as each build is wrapped up.
+    </p>
+    <a class="btn btn-sm mt-4" href="/blog/">Browse all writeups</a>
+  </div>
+</BaseLayout>

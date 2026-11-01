@@ -1,0 +1,181 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import TimeLineElement from "../components/cv/TimeLine.astro";
+import { EMAIL, GITHUB_URL, LINKEDIN_URL, LOCATION, PHONE } from "../config";
+---
+
+<BaseLayout title="Resume" sideBarActiveItemID="cv">
+  <div class="flex flex-wrap items-center justify-between gap-4 mb-5">
+    <div class="text-3xl font-bold">Profile</div>
+    <a class="btn btn-sm btn-outline" href="/Haithem-Aissa-Resume.pdf" target="_blank">Download PDF</a>
+  </div>
+
+  <div class="mb-4 text-justify space-y-3">
+    <p>
+      I'm a motivated cybersecurity student with a passion for network security, ethical hacking and system
+      administration. I'm proficient in network configuration and security, troubleshooting Linux and Windows
+      environments, and working with cybersecurity tools and technologies.
+    </p>
+    <p>
+      I'm eager to learn new security practices and contribute to real-world projects through hands-on
+      experience. I'm currently seeking an internship to develop my technical skills, gain professional
+      experience and join a dynamic team.
+    </p>
+  </div>
+
+  <div class="mb-10 flex flex-wrap gap-x-5 gap-y-1 text-sm opacity-80">
+    <span>📍 {LOCATION}</span>
+    <span>📞 {PHONE}</span>
+    <a class="link link-hover" href={`mailto:${EMAIL}`}>✉️ {EMAIL}</a>
+    <a class="link link-hover" href={LINKEDIN_URL} target="_blank">in/haithemaissa</a>
+    <a class="link link-hover" href={GITHUB_URL} target="_blank">github.com/Candlesk</a>
+  </div>
+
+  <div class="mb-5">
+    <div class="text-3xl w-full font-bold">Experience</div>
+  </div>
+
+  <div class="time-line-container mb-10">
+    <TimeLineElement
+      title="Summer Internship — Tek-up"
+      subtitle="Jun 2026 – Aug 2026 · Tunis, Ariana"
+    >
+      Built a complete DevSecOps and Cloud Security Pipeline using AWS, Docker, SonarQube and Trivy,
+      integrating security checks directly into the CI/CD workflow.
+    </TimeLineElement>
+    <TimeLineElement
+      title="Final Year Project Internship — Tunisie Telecom"
+      subtitle="Jan 2024 – May 2024 · Nabeul"
+    >
+      Designed and developed a web application that allows employees to submit and track leave requests, and
+      enables administrators to manage and approve them. Implemented authentication, role and access rights
+      management, and the database.
+    </TimeLineElement>
+  </div>
+
+  <div class="mb-5">
+    <div class="text-3xl w-full font-bold">Education</div>
+  </div>
+
+  <div class="time-line-container grid gap-4 mb-10">
+    <TimeLineElement
+      title="Information Systems and Network Security Engineer — Tek-up"
+      subtitle="2024 – Present"
+    >
+      Engineering studies focused on information systems, network security and secure infrastructure.
+    </TimeLineElement>
+    <TimeLineElement
+      title="Bachelor's Degree in Software Engineering — Institut Supérieur d'Informatique et de Gestion de Kairouan"
+      subtitle="2021 – 2024"
+    >
+      Software engineering fundamentals with a focus on application development and databases.
+    </TimeLineElement>
+  </div>
+
+  <div class="mb-5">
+    <div class="text-3xl w-full font-bold">Projects</div>
+  </div>
+
+  <div class="grid gap-4 mb-10">
+    <div>
+      <a class="font-semibold link link-hover" href="/blog/devsecops-cloud-security-pipeline">
+        DevSecOps &amp; Cloud Security Pipeline
+      </a>
+      <p class="text-sm opacity-80">
+        Automated Jenkins CI/CD pipeline with SonarQube, OWASP Dependency-Check and Trivy, deploying a
+        containerized application to AWS EC2.
+      </p>
+    </div>
+    <div>
+      <a class="font-semibold link link-hover" href="/blog/ip-mpls-backbone-network-security">
+        IP/MPLS Backbone &amp; Network Security
+      </a>
+      <p class="text-sm opacity-80">
+        Enterprise network built in GNS3 with an IP/MPLS backbone, VPN/VRF segmentation, dual-site redundancy
+        and end-to-end security.
+      </p>
+    </div>
+    <div>
+      <a class="font-semibold link link-hover" href="/blog/ha-waf-security-architecture">
+        HA-WAF Security Architecture
+      </a>
+      <p class="text-sm opacity-80">
+        Containerized high availability WAF with HAProxy, Keepalived and ModSecurity/OWASP CRS, protecting a
+        .NET/Angular/PostgreSQL application with zero database exposure.
+      </p>
+    </div>
+    <div>
+      <a class="font-semibold link link-hover" href="/blog/soc-lab">
+        Design and Implementation of a SOC Lab
+      </a>
+      <p class="text-sm opacity-80">
+        Simulated SOC architecture to test protection against cyber threats using pfSense, Suricata and Wazuh.
+      </p>
+    </div>
+    <div>
+      <a class="font-semibold link link-hover" href="/blog/leave-management-web-application">
+        Leave Management Web Application
+      </a>
+      <p class="text-sm opacity-80">
+        Full-stack application for submitting, tracking and approving leave requests, with authentication and
+        role-based access control.
+      </p>
+    </div>
+  </div>
+
+  <div class="mb-5">
+    <div class="text-3xl w-full font-bold">Skills</div>
+  </div>
+
+  <div class="grid gap-6 mb-10">
+    <div>
+      <div class="font-semibold mb-1">Security</div>
+      <div class="flex flex-wrap gap-2">
+        {["SIEM Operations", "Log Analysis", "Threat Intelligence", "Wazuh", "pfSense", "Suricata", "ModSecurity", "OWASP CRS"].map((skill) => (
+          <span class="badge badge-outline">{skill}</span>
+        ))}
+      </div>
+    </div>
+    <div>
+      <div class="font-semibold mb-1">Cloud &amp; DevOps</div>
+      <div class="flex flex-wrap gap-2">
+        {["AWS", "Docker", "Jenkins", "SonarQube", "Trivy", "OWASP Dependency-Check", "Grafana", "Git"].map((skill) => (
+          <span class="badge badge-outline">{skill}</span>
+        ))}
+      </div>
+    </div>
+    <div>
+      <div class="font-semibold mb-1">Networking</div>
+      <div class="flex flex-wrap gap-2">
+        {["IP/MPLS", "VPN/VRF", "GNS3", "Firewall policies", "High availability", "Linux", "Windows"].map((skill) => (
+          <span class="badge badge-outline">{skill}</span>
+        ))}
+      </div>
+    </div>
+    <div>
+      <div class="font-semibold mb-1">Frameworks &amp; standards</div>
+      <div class="flex flex-wrap gap-2">
+        {["ISO/IEC 27002:2022", "ISO 27001:2022", "OWASP", "MITRE ATT&CK"].map((skill) => (
+          <span class="badge badge-outline">{skill}</span>
+        ))}
+      </div>
+    </div>
+    <div>
+      <div class="font-semibold mb-1">Development</div>
+      <div class="flex flex-wrap gap-2">
+        {[".NET", "Angular", "PostgreSQL", "HAProxy", "Keepalived"].map((skill) => (
+          <span class="badge badge-outline">{skill}</span>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-5">
+    <div class="text-3xl w-full font-bold">Certifications</div>
+  </div>
+
+  <ul class="list-disc mx-6 mb-10 grid gap-2">
+    <li>eJPT — eLearnSecurity Junior Penetration Tester</li>
+    <li>Certified CyberDefender Level 1 (CCDL1) — currently studying</li>
+  </ul>
+</BaseLayout>
