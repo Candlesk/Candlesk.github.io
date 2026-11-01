@@ -79,11 +79,6 @@ Integrating the tools was harder than writing the pipeline itself.
 
 The finished pipeline retrieves the application, runs all security checks, builds and publishes the image, and deploys it to EC2 without manual steps. Security reports and Jenkins logs provide a trace of what happened on each run.
 
-<figure>
-  <img src="/devsecops-results.webp" alt="Pipeline, deployment and monitoring overview" class="w-full rounded-lg" />
-  <figcaption class="text-sm opacity-70 text-center mt-2">Pipeline, deployment and monitoring overview.</figcaption>
-</figure>
-
 More importantly, the project showed me where tool integration breaks in practice: service discovery between containers, permissions, API compatibility and secret handling. Those are the parts that a simple "tools installed" checklist does not cover.
 
 ## What I would add next
