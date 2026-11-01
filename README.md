@@ -1,18 +1,16 @@
 # Haithem Aissa — Portfolio
 
-Personal portfolio and project writeups, built with [Astro](https://astro.build),
-TailwindCSS and DaisyUI, based on the [Astrofy](https://github.com/manuelernestog/astrofy)
-template.
+Personal portfolio, built with [Astro](https://astro.build), TailwindCSS and DaisyUI,
+based on the [Astrofy](https://github.com/manuelernestog/astrofy) template.
 
 ## Pages
 
-| Route       | What it is                                              |
-| ----------- | ------------------------------------------------------- |
-| `/`         | Hero, intro and featured projects                       |
-| `/projects` | All projects, linked to their writeups                  |
-| `/blog/`    | Project writeups (named after the projects)             |
-| `/cv`       | Resume: experience, education, projects, skills, certs  |
-| `/rss.xml`  | RSS feed of writeups                                    |
+| Route             | What it is                                              |
+| ----------------- | ------------------------------------------------------- |
+| `/`               | Hero, intro and featured projects                       |
+| `/projects`       | All projects, linked to their project pages             |
+| `/projects/<project>` | Individual project pages (no public listing)         |
+| `/cv`             | Resume: experience, education, projects, skills, certs  |
 
 ## Development
 
@@ -28,10 +26,10 @@ pnpm build     # production build in dist/
 pnpm preview   # preview the production build
 ```
 
-## Adding a project writeup
+## Adding a project page
 
-Each writeup is a Markdown file in `src/content/blog/`. The **file name becomes the URL
-slug**, so keep it lowercase with hyphens.
+Each project page is a Markdown file in `src/content/projects/`. The **file name becomes
+the URL slug**, so keep it lowercase with hyphens.
 
 ```md
 ---
@@ -43,15 +41,16 @@ badge: "Security"
 tags: ["security", "networking"]
 ---
 
-Writeup content goes here.
+Project details go here.
 ```
 
 - Put cover images in `public/` and reference them as `/filename.webp`.
-- Tags create filter pages at `/blog/tag/<tag>`.
-- The project automatically appears on `/`, `/projects` and `/blog/`, sorted by `pubDate`.
+- Tags are displayed as labels on the project page and project cards.
+- The project automatically appears on `/` and `/projects`, sorted by `pubDate`, and gets
+  its own page at `/projects/<file-name>`.
 
-The five existing writeups are scaffolded with sections to fill in: overview, architecture,
-implementation, testing/results, challenges and screenshots.
+The five existing project pages are scaffolded with sections to fill in: overview,
+architecture, implementation, testing/results, challenges and screenshots.
 
 ## Customising
 

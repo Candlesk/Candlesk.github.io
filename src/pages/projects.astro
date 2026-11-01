@@ -4,7 +4,7 @@ import HorizontalCard from "../components/HorizontalCard.astro";
 import { getCollection } from "astro:content";
 import createSlug from "../lib/createSlug";
 
-const posts = (await getCollection("blog")).sort(
+const posts = (await getCollection("projects")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 ---
@@ -13,8 +13,8 @@ const posts = (await getCollection("blog")).sort(
   <div class="mb-10">
     <div class="text-3xl w-full font-bold mb-2">Projects</div>
     <p class="text-lg opacity-80 max-w-[65ch]">
-      Hands-on work across network security, cloud security, DevSecOps and blue team operations. Every project
-      has a dedicated writeup where I document the architecture and the build.
+      Hands-on work across network security, cloud security, DevSecOps and blue team operations. Open a project
+      to see its architecture, implementation and results.
     </p>
   </div>
 
@@ -26,7 +26,7 @@ const posts = (await getCollection("blog")).sort(
             title={post.data.title}
             img={post.data.heroImage}
             desc={post.data.description}
-            url={"/blog/" + createSlug(post.data.title, post.slug)}
+            url={"/projects/" + createSlug(post.data.title, post.slug)}
             target="_self"
             badge={post.data.badge}
             tags={post.data.tags}
@@ -38,10 +38,10 @@ const posts = (await getCollection("blog")).sort(
   </ul>
 
   <div class="mt-10 rounded-lg border border-base-300 p-6">
-    <div class="font-bold text-lg mb-1">Writeups in progress</div>
+    <div class="font-bold text-lg mb-1">More projects coming soon</div>
     <p class="opacity-75">
-      Each project post is already scaffolded with sections for architecture, implementation, testing and
-      lessons learned. The detailed content is added as I finish documenting each build.
+      I'm continuously building and documenting new work in network security, cloud security and blue team
+      operations.
     </p>
   </div>
 </BaseLayout>
