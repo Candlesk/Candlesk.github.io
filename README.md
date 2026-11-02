@@ -68,8 +68,27 @@ Any static host works. On Netlify or Vercel, use:
 - Build command: `pnpm build`
 - Output directory: `dist`
 
-For GitHub Pages, set `site` to `https://<username>.github.io` and deploy the `dist`
-folder.
+### GitHub Pages
+
+The repository includes `.github/workflows/deploy.yml`, which builds the site and deploys
+it whenever `main` is pushed.
+
+1. Create a GitHub repository named **`Candlesk.github.io`** (this makes it a user site at
+   `https://candlesk.github.io`, so no base path is needed).
+2. Push this project to it:
+   ```bash
+   git remote add origin git@github.com:Candlesk/Candlesk.github.io.git
+   git push -u origin main
+   ```
+3. In the repository, open **Settings → Pages** and set **Source** to **GitHub Actions**.
+4. Open the **Actions** tab and wait for the “Deploy to GitHub Pages” workflow to finish.
+
+The site will be available at `https://candlesk.github.io`.
+
+If you use a normal repository name instead (for example `portfolio`), the URL becomes
+`https://candlesk.github.io/portfolio`. That requires setting `base: "/portfolio"` in
+`astro.config.mjs` and prefixing all internal links and public asset paths with the base
+path. The user-site setup above avoids that extra work.
 
 ## Credits
 
