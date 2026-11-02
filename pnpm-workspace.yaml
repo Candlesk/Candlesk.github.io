@@ -1,6 +1,6 @@
-onlyBuiltDependencies:
-  - esbuild
-  - sharp
+allowBuilds:
+  esbuild: true
+  sharp: true
 
 # @astrojs/sitemap 3.0.x passes an absolute output directory, which sitemap 7.1.3+
 # rejects. Pin the last compatible release.
